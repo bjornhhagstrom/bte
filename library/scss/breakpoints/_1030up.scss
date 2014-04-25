@@ -1,0 +1,30 @@
+/******************************************************************
+Site Name:
+Author:
+
+Stylesheet: Desktop Stylsheet
+
+This is the desktop size. It's larger than an iPad so it will only
+be seen on the Desktop.
+
+******************************************************************/
+
+.wrap {
+  width: 1040px;
+}
+
+// preview pages
+.page-template-preview-php {
+
+  /* Flexslider */
+  .flexslider {
+    .flex-control-nav {
+    }
+    .flex-control-nav li {
+    }
+    .flex-control-paging li a {
+    	padding: 10px 20px 0 10px;
+      font-size: 1em;
+    }
+  }
+}

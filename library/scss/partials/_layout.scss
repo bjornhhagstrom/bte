@@ -1,0 +1,89 @@
+/******************************************************************
+Site Name:
+Author:
+
+Stylesheet: Layout
+
+******************************************************************/
+
+// preview pages
+.page-template-preview-php {
+
+	/* Flexslider */
+	.flexslider { 
+		margin: 30px 0 0; 
+		background: transparent; 
+		border: none; 
+		position: relative; 
+		-webkit-border-radius: 0; 
+		-moz-border-radius: 0; 
+		-o-border-radius: 0; 
+		border-radius: 0; 
+		-webkit-box-shadow: 0; 
+		-moz-box-shadow: 0; 
+		-o-box-shadow: 0; 
+		box-shadow: 0;
+		.slide {
+			position: relative;
+			.panel-wrapper {
+				padding: 1em;
+			}
+		}
+			.panel-cta {
+				position: absolute;
+				bottom: 10px;
+				width: 100%; 
+				text-align: center;
+				opacity: 0;
+				transition: all 0.5s ease 0.5s; 
+			}
+			.flex-active-slide .panel-cta {
+				opacity: 1;
+			}
+		/* Direction Nav */
+		.flex-direction-nav a  { 
+			display: block; 
+			width: auto; 
+			height: auto; 
+			margin: -1em 0 0; 
+			position: absolute; 
+			top: auto;
+			bottom: 10px;
+			opacity: 1;
+			color: rgba(0,0,0,0.8); 
+			text-shadow: none;
+		}
+		.flex-direction-nav .flex-prev { left: 10px; }
+		.flex-direction-nav .flex-next { right: 10px; text-align: right; }
+		.flexslider:hover .flex-prev { opacity: 1; left: 10px; }
+		.flexslider:hover .flex-next { opacity: 1; right: 10px; }
+		.flexslider:hover .flex-next:hover, .flexslider:hover .flex-prev:hover { opacity: 1; }
+		.flex-direction-nav a:before  { font-family: inherit; font-size: 1em; display: none; content: ''; }
+		.flex-direction-nav a.flex-next:before  { content: ''; }
+		/* Control Nav */
+		.flex-control-nav {top: -40px; text-align: center;}
+		.flex-control-nav li {margin: 0 6px; display: inline-block; zoom: 1; *display: inline;}
+		.flex-control-paging li a {
+			width: 11px; 
+			height: 11px; 
+			display: block; 
+			background: #666; 
+			background: rgba(0,0,0,0.5); 
+			cursor: pointer; 
+			text-indent: -9999px; 
+			overflow: hidden;
+			-webkit-border-radius: 20px; 
+			-moz-border-radius: 20px; 
+			-o-border-radius: 20px; 
+			border-radius: 20px; 
+			-webkit-box-shadow: inset 0 0 3px rgba(0,0,0,0.3); 
+			-moz-box-shadow: inset 0 0 3px rgba(0,0,0,0.3); 
+			-o-box-shadow: inset 0 0 3px rgba(0,0,0,0.3); 
+			box-shadow: inset 0 0 3px rgba(0,0,0,0.3); 
+		}
+		.flex-control-paging li a:hover { background: #333; background: rgba(0,0,0,0.7); }
+		.flex-control-paging li.flex-active a { background: #aaa; cursor: default; }
+	}
+
+
+}
