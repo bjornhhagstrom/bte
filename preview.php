@@ -29,50 +29,88 @@
 
 									<h1 class="page-title"><?php the_title(); ?></h1>
 
-									<p class="byline vcard">
-										<?php printf( __( 'Posted <time class="updated" datetime="%1$s" pubdate>%2$s</time> by <span class="author">%3$s</span>', 'bonestheme' ), get_the_time('Y-m-j'), get_the_time(get_option('date_format')), get_the_author_link( get_the_author_meta( 'ID' ) )); ?>
-									</p>
-
 								</header>
 
 								<section class="entry-content cf" itemprop="articleBody">
 									<?php the_content(); ?>
+								</section>
 
-                  <div class="preview-panels cf">
+                <?php $section_args = array(
+                  'sort_order' => 'ASC',
+                  'sort_column' => 'menu_order',
+                  'child_of' => $post->ID,
+                  'parent' => $post->ID
+                ); 
+                $sections = get_pages($section_args); 
+                
+                // make the preview sections
+                if( $sections ): 
+                
+                $section_count = 0; 
+                  
+                  foreach( $sections as $section ): 
+
+                  $section_count++;
+
+                  // vars
+                  $section_title = $section->post_title;
+                  $section_slug = $section->post_name;
+                  $section_id = $section->ID;
+
+                  // layout the first section
+                  if($section_count == 1): ?>
+
+                  <section class="<?php echo 'section-' . $section_count; ?> <?php echo $section_slug; ?> cf">
+
+                    <h5 class="section-title">1. <?php echo $section_title; ?></h5>
+                    <div class="cf"></div>
 
                     <div class="flexslider">
 
-                      <?php if( have_rows('add_a_panel') ): ?>
+                      <?php 
+                      $subpage_args = array(
+                        'sort_order' => 'ASC',
+                        'sort_column' => 'menu_order',
+                        'child_of' => $section_id
+                      ); 
+                      $subpages = get_pages($subpage_args); 
+                      
+                      // make slideshow nav
+                      if( $subpages ): 
+                      $i = 0; 
+                      $count = count($subpages); 
+                      ?>
 
                         <ol class="flex-control-nav flex-control-paging">
 
-                          <?php while( have_rows('add_a_panel') ): the_row();
+                          <?php foreach( $subpages as $subpage ): $i++;
 
                             // vars
-                            $panel_tab = get_sub_field('panel_tab');
-
+                            $panel_tab = $subpage->post_title;
+                            $panel_tab_class = $subpage->post_name;
                             ?>
 
-                            <li><a href="#"><?php echo $panel_tab; ?></a></li>
+                            <li class="<?php echo $panel_tab_class; ?> t-1of<?php echo $count;?> d-1of<?php echo $count;?>">
+                              <a href="#"><?php echo $panel_tab; ?></a>
+                            </li>
 
-                          <?php endwhile; ?>
+                          <?php endforeach; //end foreach sub page ?>
 
                         </ol>
 
-                      <?php endif; ?>
+                      <?php endif; // end slideshow nav ?>
 
-                      <?php if( have_rows('add_a_panel') ): ?>
+                      <?php 
+                      // make slides
+                      if( $subpages ): ?>
 
                         <ul class="slides">
 
-                        <?php while( have_rows('add_a_panel') ): the_row();
+                        <?php foreach( $subpages as $subpage ):
 
                           // vars
-                          $panel_title = get_sub_field('panel_title');
-                          $panel_content = get_sub_field('panel_content');
-                          $panel_cta_text = get_sub_field('panel_cta_text');
-                          $panel_cta_link = get_sub_field('panel_cta_link');
-
+                          $panel_title = $subpage->post_title;
+                          $panel_content = $subpage->post_content;
                           ?>
 
                           <li class="slide">
@@ -83,22 +121,144 @@
 
                               <span class="panel-content"><?php echo $panel_content; ?></span>
 
-                              <a class="panel-cta" href="<?php echo $panel_cta_link; ?>"><?php echo $panel_cta_text; ?></a>
-                              
+                              <div class="panel-cta">
+                                <a class="button" href="#">CTA</a>
+                              </div>
+
                             </div>
 
                           </li>
 
-                        <?php endwhile; ?>
+                        <?php endforeach; // end foreach ?>
 
                         </ul>
 
-                      <?php endif; ?>
+                      <?php endif; // end slides ?>
 
                     </div>
+                    
+                  </section>
+                    
+                  <?php endif; // end FIRST section ?> 
 
-                  </div>
-								</section>
+                  <?php if($section_count == '2'): ?>
+
+                  <section class="<?php echo 'section-' . $section_count; ?> <?php echo $page_slug; ?> entry-content cf">
+                    <h5 class="section-title">2. <?php echo $section_title; ?></h5>
+                    <?php 
+                    $subpage_args = array(
+                      'sort_order' => 'ASC',
+                      'sort_column' => 'menu_order',
+                      'child_of' => $section_id
+                    ); 
+                    $subpages = get_pages($subpage_args); 
+                    
+                    // make list
+                    if( $subpages ): 
+                    $i = 0; 
+                    $count = count($subpages);
+                    ?>
+                    <ul>
+
+                      <?php foreach( $subpages as $subpage ): $i++;
+
+                      // vars
+                      $subpage_title = $subpage->post_title;
+                      $subpage_content = $subpage->post_content;
+                      $subpage_excerpt = 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh.<br /><br /><a class="button" href="#">Learn More</a>';
+                      ?>
+
+                      <li class="m-all t-1of<?php echo $count; ?> d-1of<?php echo $count; ?><?php if($i % $count == '0'){ echo ' last-col'; } ?>">
+                        <h3><span style="font-size: 4em;">&#10006;</span><br /><?php echo $subpage_title; ?></h3>
+                        <p><?php echo $subpage_excerpt; ?></p>
+                      </li>
+                      <?php endforeach; // end list ?>
+
+                    </ul>
+                    <?php endif; // end subpages ?>
+                  </section>
+
+                  <?php endif; // end SECOND section ?>
+
+                  <?php if($section_count == '3'): ?>
+
+                  <section class="<?php echo 'section-' . $section_count; ?> <?php echo $page_slug; ?> entry-content cf">
+                    <h5 class="section-title">3. <?php echo $section_title; ?></h5>
+                    <?php 
+                    $subpage_args = array(
+                      'sort_order' => 'ASC',
+                      'sort_column' => 'menu_order',
+                      'child_of' => $section_id
+                    ); 
+                    $subpages = get_pages($subpage_args); 
+                    
+                    // make list
+                    if( $subpages ): 
+                    $i = 0; 
+                    $count = count($subpages);
+                    ?>
+                    <ul>
+
+                      <?php foreach( $subpages as $subpage ): $i++;
+
+                      // vars
+                      $subpage_title = $subpage->post_title;
+                      $subpage_content = $subpage->post_content;
+                      $subpage_excerpt = 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh.<br /><br /><a class="button" href="#">Learn More</a>';
+                      ?>
+
+                      <li class="m-all t-1of<?php echo $count; ?> d-1of<?php echo $count; ?><?php if($i % $count == '0'){ echo ' last-col'; } ?>">
+                        <h3><span style="font-size: 2em;">&#9872;</span> <?php echo $subpage_title; ?></h3>
+                        <p><?php echo $subpage_excerpt; ?></p>
+                      </li>
+                      <?php endforeach; // end list ?>
+
+                    </ul>
+                    <?php endif; // end subpages ?>
+                  </section>
+
+                  <?php endif; // end THIRD section ?>
+
+                  <?php if($section_count == '4'): ?>
+
+                  <section class="<?php echo 'section-' . $section_count; ?> <?php echo $page_slug; ?> entry-content cf">
+                    <h5 class="section-title">4. <?php echo $section_title; ?></h5>
+                    <?php 
+                    $subpage_args = array(
+                      'sort_order' => 'ASC',
+                      'sort_column' => 'menu_order',
+                      'child_of' => $section_id
+                    ); 
+                    $subpages = get_pages($subpage_args); 
+                    
+                    // make list
+                    if( $subpages ): 
+                    $i = 0; 
+                    $count = count($subpages);
+                    ?>
+                    <ul>
+
+                      <?php foreach( $subpages as $subpage ): $i++;
+
+                      // vars
+                      $subpage_title = $subpage->post_title;
+                      $subpage_content = $subpage->post_content;
+                      $subpage_excerpt = 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh.<br /><br /><a class="button" href="#">Learn More</a>';
+                      ?>
+
+                      <li class="m-all t-1of<?php echo $count; ?> d-1of<?php echo $count; ?><?php if($i % $count == '0'){ echo ' last-col'; } ?>">
+                        <h3><?php echo $subpage_title; ?></h3>
+                        <p><?php echo $subpage_excerpt; ?></p>
+                      </li>
+                      <?php endforeach; // end list ?>
+
+                    </ul>
+                    <?php endif; // end subpages ?>
+                  </section>
+
+                  <?php endif; // end FOURTH section ?> 
+
+                <?php endforeach; endif; // end foreach section, end if sections ?>
 
 								<footer class="article-footer">
 

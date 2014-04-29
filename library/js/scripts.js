@@ -111,9 +111,12 @@ jQuery(document).ready(function($) {
   $(window).load(function() {
     var $flexslider = $('.flexslider');
     $flexslider.flexslider({
-      animation: "slide",
+      animation: "fade",
       slideshow: false,
+      animationLoop: false,
       manualControls: ".flex-control-nav li",
+      prevText: "&laquo;&nbsp;Previous",           
+      nextText: "Next&nbsp;&raquo;",
       useCSS: false /* Chrome fix*/
     });
   });

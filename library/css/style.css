@@ -613,6 +613,25 @@ BOX SIZING
 /* @include box-sizing(border-box); */
 /* NOTE: value of "padding-box" is only supported in Gecko. So
 probably best not to use it. I mean, were you going to anyway? */
+/*********************
+BUTTONS
+*********************/
+/* @include box-sizing(border-box); */
+/* NOTE: value of "padding-box" is only supported in Gecko. So
+probably best not to use it. I mean, were you going to anyway? */
+.button {
+  padding: 0.5em 1em;
+  color: #f01d4f;
+  background-color: #f8f9fa;
+  text-decoration: none;
+  border-radius: 2em; }
+
+.box {
+  padding: 1em;
+  color: #5c6b80;
+  background-color: #eaedf2;
+  border-radius: 1em; }
+
 /******************************************************************
 Site Name:
 Author:
@@ -849,6 +868,19 @@ Stylesheet: Layout
 ******************************************************************/
 .page-template-preview-php {
   /* Flexslider */ }
+  .page-template-preview-php section {
+    border-bottom: 1px solid #eaedf2; }
+    .page-template-preview-php section.section-2, .page-template-preview-php section.section-3, .page-template-preview-php section.section-4 {
+      padding-bottom: 1.5em; }
+      .page-template-preview-php section.section-2 .button, .page-template-preview-php section.section-3 .button, .page-template-preview-php section.section-4 .button {
+        display: inline;
+        margin-top: 0.5em; }
+    .page-template-preview-php section.section-2 {
+      text-align: center;
+      background-color: #eaedf2; }
+  .page-template-preview-php .section-title {
+    text-align: center;
+    text-transform: uppercase; }
   .page-template-preview-php .flexslider {
     margin: 30px 0 0;
     background: transparent;
@@ -858,33 +890,41 @@ Stylesheet: Layout
     -moz-border-radius: 0;
     -o-border-radius: 0;
     border-radius: 0;
-    -webkit-box-shadow: 0;
-    -moz-box-shadow: 0;
-    -o-box-shadow: 0;
-    box-shadow: 0;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    -o-box-shadow: none;
+    box-shadow: none;
     /* Direction Nav */
     /* Control Nav */ }
+    .page-template-preview-php .flexslider .slides {
+      margin-bottom: 3em; }
     .page-template-preview-php .flexslider .slide {
       position: relative; }
       .page-template-preview-php .flexslider .slide .panel-wrapper {
-        padding: 1em; }
+        padding: 1em 1em 3em; }
     .page-template-preview-php .flexslider .panel-cta {
       position: absolute;
-      bottom: 10px;
+      bottom: -0.5em;
       width: 100%;
       text-align: center;
       opacity: 0;
       transition: all 0.5s ease 0.5s; }
+      .page-template-preview-php .flexslider .panel-cta .button {
+        padding: 0.5em 1em;
+        color: white;
+        background-color: #f01d4f;
+        text-decoration: none;
+        border-radius: 2em; }
     .page-template-preview-php .flexslider .flex-active-slide .panel-cta {
       opacity: 1; }
     .page-template-preview-php .flexslider .flex-direction-nav a {
       display: block;
       width: auto;
       height: auto;
-      margin: -1em 0 0;
+      margin: 0;
       position: absolute;
       top: auto;
-      bottom: 10px;
+      bottom: 0;
       opacity: 1;
       color: rgba(0, 0, 0, 0.8);
       text-shadow: none; }
@@ -911,34 +951,43 @@ Stylesheet: Layout
     .page-template-preview-php .flexslider .flex-control-nav {
       top: -40px;
       text-align: center; }
-    .page-template-preview-php .flexslider .flex-control-nav li {
-      margin: 0 6px;
-      display: inline-block;
-      zoom: 1;
-      *display: inline; }
-    .page-template-preview-php .flexslider .flex-control-paging li a {
-      width: 11px;
-      height: 11px;
-      display: block;
-      background: #666;
-      background: rgba(0, 0, 0, 0.5);
-      cursor: pointer;
-      text-indent: -9999px;
-      overflow: hidden;
-      -webkit-border-radius: 20px;
-      -moz-border-radius: 20px;
-      -o-border-radius: 20px;
-      border-radius: 20px;
-      -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
-      -moz-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
-      -o-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
-      box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3); }
+      .page-template-preview-php .flexslider .flex-control-nav li {
+        margin: 0 6px;
+        display: inline-block;
+        zoom: 1;
+        *display: inline; }
+        .page-template-preview-php .flexslider .flex-control-nav li a {
+          width: 11px;
+          height: 11px;
+          display: block;
+          background: #666;
+          background: rgba(0, 0, 0, 0.5);
+          cursor: pointer;
+          text-indent: -9999px;
+          overflow: hidden;
+          -webkit-border-radius: 20px;
+          -moz-border-radius: 20px;
+          -o-border-radius: 20px;
+          border-radius: 20px;
+          -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+          -moz-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+          -o-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+          box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3); }
+          .page-template-preview-php .flexslider .flex-control-nav li a p {
+            margin: 0; }
+        .page-template-preview-php .flexslider .flex-control-nav li:last-child a {
+          background-color: #f01d4f;
+          color: white; }
     .page-template-preview-php .flexslider .flex-control-paging li a:hover {
       background: #333;
       background: rgba(0, 0, 0, 0.7); }
     .page-template-preview-php .flexslider .flex-control-paging li.flex-active a {
       background: #aaa;
       cursor: default; }
+  .page-template-preview-php .section-4 ul li:last-child {
+    padding: 1em;
+    background-color: #eaedf2;
+    border-radius: 1em; }
 
 /*********************
 IMPORTING MODULES
@@ -2284,25 +2333,27 @@ you can add resource intensive styles.
       .page-template-preview-php .flexslider .flex-control-nav li {
         margin: 0;
         float: left; }
-      .page-template-preview-php .flexslider .flex-control-paging li a {
-        width: auto;
-        height: 60px;
-        padding: 6px;
-        display: block;
-        font-size: 0.8em;
-        line-height: 1em;
-        background: transparent;
-        cursor: pointer;
-        text-decoration: none;
-        text-indent: 0;
-        -webkit-border-radius: 0;
-        -moz-border-radius: 0;
-        -o-border-radius: 0;
-        border-radius: 0;
-        -webkit-box-shadow: none;
-        -moz-box-shadow: none;
-        -o-box-shadow: none;
-        box-shadow: none; }
+      .page-template-preview-php .flexslider .flex-control-paging li {
+        padding: 0; }
+        .page-template-preview-php .flexslider .flex-control-paging li a {
+          width: auto;
+          height: 60px;
+          padding: 6px;
+          display: block;
+          font-size: 0.8em;
+          line-height: 1em;
+          background: transparent;
+          cursor: pointer;
+          text-decoration: none;
+          text-indent: 0;
+          -webkit-border-radius: 0;
+          -moz-border-radius: 0;
+          -o-border-radius: 0;
+          border-radius: 0;
+          -webkit-box-shadow: none;
+          -moz-box-shadow: none;
+          -o-box-shadow: none;
+          box-shadow: none; }
 
   /*********************
   SIDEBARS & ASIDES
@@ -2373,9 +2424,11 @@ you can add resource intensive styles.
 
   .page-template-preview-php {
     /* Flexslider */ }
-    .page-template-preview-php .flexslider .flex-control-paging li a {
-      padding: 10px 20px 0 10px;
-      font-size: 1em; } }
+    .page-template-preview-php .flexslider .flex-control-nav li {
+      padding: 0; }
+      .page-template-preview-php .flexslider .flex-control-nav li a {
+        padding: 10px 20px 0 10px;
+        font-size: 1em; } }
 /*********************
 LARGE VIEWING SIZE
 This is for the larger monitors and possibly full screen viewers.

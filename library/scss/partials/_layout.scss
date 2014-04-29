@@ -9,6 +9,26 @@ Stylesheet: Layout
 // preview pages
 .page-template-preview-php {
 
+	section {
+		border-bottom: 1px solid $gray;
+		&.section-2, &.section-3, &.section-4 {
+			padding-bottom: 1.5em;
+			.button {
+				display: inline;
+				margin-top: 0.5em;
+			}
+		}
+		&.section-2 {
+			text-align: center;
+			background-color: $gray;
+		}
+	}
+
+	.section-title {
+		text-align: center;
+		text-transform: uppercase;
+	}
+
 	/* Flexslider */
 	.flexslider { 
 		margin: 30px 0 0; 
@@ -19,23 +39,29 @@ Stylesheet: Layout
 		-moz-border-radius: 0; 
 		-o-border-radius: 0; 
 		border-radius: 0; 
-		-webkit-box-shadow: 0; 
-		-moz-box-shadow: 0; 
-		-o-box-shadow: 0; 
-		box-shadow: 0;
+		-webkit-box-shadow: none; 
+		-moz-box-shadow: none; 
+		-o-box-shadow: none; 
+		box-shadow: none;
+		.slides {
+			margin-bottom: 3em;
+		}
 		.slide {
 			position: relative;
 			.panel-wrapper {
-				padding: 1em;
+				padding: 1em 1em 3em;
 			}
 		}
 			.panel-cta {
 				position: absolute;
-				bottom: 10px;
+				bottom: -0.5em;
 				width: 100%; 
 				text-align: center;
 				opacity: 0;
-				transition: all 0.5s ease 0.5s; 
+				transition: all 0.5s ease 0.5s;
+				.button {
+					@include button($white, $link-color);
+				}
 			}
 			.flex-active-slide .panel-cta {
 				opacity: 1;
@@ -45,10 +71,10 @@ Stylesheet: Layout
 			display: block; 
 			width: auto; 
 			height: auto; 
-			margin: -1em 0 0; 
+			margin: 0; 
 			position: absolute; 
 			top: auto;
-			bottom: 10px;
+			bottom: 0;
 			opacity: 1;
 			color: rgba(0,0,0,0.8); 
 			text-shadow: none;
@@ -61,28 +87,55 @@ Stylesheet: Layout
 		.flex-direction-nav a:before  { font-family: inherit; font-size: 1em; display: none; content: ''; }
 		.flex-direction-nav a.flex-next:before  { content: ''; }
 		/* Control Nav */
-		.flex-control-nav {top: -40px; text-align: center;}
-		.flex-control-nav li {margin: 0 6px; display: inline-block; zoom: 1; *display: inline;}
-		.flex-control-paging li a {
-			width: 11px; 
-			height: 11px; 
-			display: block; 
-			background: #666; 
-			background: rgba(0,0,0,0.5); 
-			cursor: pointer; 
-			text-indent: -9999px; 
-			overflow: hidden;
-			-webkit-border-radius: 20px; 
-			-moz-border-radius: 20px; 
-			-o-border-radius: 20px; 
-			border-radius: 20px; 
-			-webkit-box-shadow: inset 0 0 3px rgba(0,0,0,0.3); 
-			-moz-box-shadow: inset 0 0 3px rgba(0,0,0,0.3); 
-			-o-box-shadow: inset 0 0 3px rgba(0,0,0,0.3); 
-			box-shadow: inset 0 0 3px rgba(0,0,0,0.3); 
+		.flex-control-nav {
+			top: -40px; 
+			text-align: center;
+			li {
+				margin: 0 6px; 
+				display: inline-block; 
+				zoom: 1; 
+				*display: inline;
+				a {
+					width: 11px; 
+					height: 11px; 
+					display: block; 
+					background: #666; 
+					background: rgba(0,0,0,0.5); 
+					cursor: pointer; 
+					text-indent: -9999px; 
+					overflow: hidden;
+					-webkit-border-radius: 20px; 
+					-moz-border-radius: 20px; 
+					-o-border-radius: 20px; 
+					border-radius: 20px; 
+					-webkit-box-shadow: inset 0 0 3px rgba(0,0,0,0.3); 
+					-moz-box-shadow: inset 0 0 3px rgba(0,0,0,0.3); 
+					-o-box-shadow: inset 0 0 3px rgba(0,0,0,0.3); 
+					box-shadow: inset 0 0 3px rgba(0,0,0,0.3);
+					p {
+						margin: 0;
+					}
+				}
+				&:last-child a {
+					background-color: $link-color;
+					color: $white;
+				}
+			}
 		}
 		.flex-control-paging li a:hover { background: #333; background: rgba(0,0,0,0.7); }
 		.flex-control-paging li.flex-active a { background: #aaa; cursor: default; }
+	}
+
+	.section-4 {
+		ul {
+			li {
+				&:last-child {
+					padding: 1em;
+					background-color: $gray;
+					border-radius: 1em;
+				}
+			}
+		}
 	}
 
 

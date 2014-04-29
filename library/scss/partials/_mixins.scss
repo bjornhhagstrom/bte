@@ -70,4 +70,30 @@ probably best not to use it. I mean, were you going to anyway? */
 	box-sizing:         $type;
 }
 
+/*********************
+BUTTONS
+*********************/
+
+/* @include box-sizing(border-box); */
+/* NOTE: value of "padding-box" is only supported in Gecko. So
+probably best not to use it. I mean, were you going to anyway? */
+@mixin button($textcolor: $link-color, $backgroundcolor: $light-gray) {
+	padding: 0.5em 1em;
+	color: $textcolor;
+	background-color: $backgroundcolor;
+	text-decoration: none;
+	border-radius: 2em;
+}
+.button {
+	@include button();
+}
+@mixin box($textcolor: $text-color, $backgroundcolor: $gray) {
+	padding: 1em;
+	color: $textcolor;
+	background-color: $backgroundcolor;
+	border-radius: 1em;
+}
+.box {
+	@include box();
+}
 

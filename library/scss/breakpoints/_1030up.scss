@@ -19,12 +19,13 @@ be seen on the Desktop.
   /* Flexslider */
   .flexslider {
     .flex-control-nav {
-    }
-    .flex-control-nav li {
-    }
-    .flex-control-paging li a {
-    	padding: 10px 20px 0 10px;
-      font-size: 1em;
+      li {
+        padding: 0;
+        a {
+        	padding: 10px 20px 0 10px;
+          font-size: 1em;
+        }
+      }
     }
   }
 }

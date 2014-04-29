@@ -81,6 +81,25 @@ BOX SIZING
 /* @include box-sizing(border-box); */
 /* NOTE: value of "padding-box" is only supported in Gecko. So
 probably best not to use it. I mean, were you going to anyway? */
+/*********************
+BUTTONS
+*********************/
+/* @include box-sizing(border-box); */
+/* NOTE: value of "padding-box" is only supported in Gecko. So
+probably best not to use it. I mean, were you going to anyway? */
+.button {
+  padding: 0.5em 1em;
+  color: #f01d4f;
+  background-color: #f8f9fa;
+  text-decoration: none;
+  border-radius: 2em; }
+
+.box {
+  padding: 1em;
+  color: #5c6b80;
+  background-color: #eaedf2;
+  border-radius: 1em; }
+
 /******************************************************************
 Site Name:
 Author:
@@ -263,25 +282,27 @@ NAVIGATION STYLES
     .page-template-preview-php .flexslider .flex-control-nav li {
       margin: 0;
       float: left; }
-    .page-template-preview-php .flexslider .flex-control-paging li a {
-      width: auto;
-      height: 60px;
-      padding: 6px;
-      display: block;
-      font-size: 0.8em;
-      line-height: 1em;
-      background: transparent;
-      cursor: pointer;
-      text-decoration: none;
-      text-indent: 0;
-      -webkit-border-radius: 0;
-      -moz-border-radius: 0;
-      -o-border-radius: 0;
-      border-radius: 0;
-      -webkit-box-shadow: none;
-      -moz-box-shadow: none;
-      -o-box-shadow: none;
-      box-shadow: none; }
+    .page-template-preview-php .flexslider .flex-control-paging li {
+      padding: 0; }
+      .page-template-preview-php .flexslider .flex-control-paging li a {
+        width: auto;
+        height: 60px;
+        padding: 6px;
+        display: block;
+        font-size: 0.8em;
+        line-height: 1em;
+        background: transparent;
+        cursor: pointer;
+        text-decoration: none;
+        text-indent: 0;
+        -webkit-border-radius: 0;
+        -moz-border-radius: 0;
+        -o-border-radius: 0;
+        border-radius: 0;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        -o-box-shadow: none;
+        box-shadow: none; }
 
 /*********************
 SIDEBARS & ASIDES
@@ -345,9 +366,11 @@ be seen on the Desktop.
 
 .page-template-preview-php {
   /* Flexslider */ }
-  .page-template-preview-php .flexslider .flex-control-paging li a {
-    padding: 10px 20px 0 10px;
-    font-size: 1em; }
+  .page-template-preview-php .flexslider .flex-control-nav li {
+    padding: 0; }
+    .page-template-preview-php .flexslider .flex-control-nav li a {
+      padding: 10px 20px 0 10px;
+      font-size: 1em; }
 
 /*
 you can call the larger styles if you want, but there's really no need
