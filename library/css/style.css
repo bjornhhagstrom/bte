@@ -657,10 +657,6 @@ own grids. It's better in the long run and allows you full control
 over your project's layout.
 
 ******************************************************************/
-.last-col {
-  float: right;
-  padding-right: 0; }
-
 /*
 Mobile Grid Styles
 These are the widths for the mobile grid.
@@ -988,6 +984,26 @@ Stylesheet: Layout
     padding: 1em;
     background-color: #eaedf2;
     border-radius: 1em; }
+
+.preview-header-nav {
+  padding: 0.5em;
+  background-color: #323944;
+  color: white; }
+  .preview-header-nav .preview-nav-title {
+    margin: 0 0 0.25em; }
+  .preview-header-nav .button {
+    font-size: 0.8em; }
+
+.preview-footer-nav .prev {
+  float: left; }
+.preview-footer-nav .next {
+  float: right; }
+.preview-footer-nav .cta .button {
+  padding: 0.5em 1em;
+  color: white;
+  background-color: #f01d4f;
+  text-decoration: none;
+  border-radius: 2em; }
 
 /*********************
 IMPORTING MODULES
@@ -2259,6 +2275,10 @@ you can add resource intensive styles.
   .wrap {
     width: 760px; }
 
+  .last-col {
+    float: right;
+    padding-right: 0; }
+
   /*********************
   HEADER STYLES
   *********************/
@@ -2355,6 +2375,29 @@ you can add resource intensive styles.
           -o-box-shadow: none;
           box-shadow: none; }
 
+  .preview-header-nav {
+    position: relative; }
+    .preview-header-nav nav {
+      float: right;
+      text-align: right; }
+      .preview-header-nav nav form {
+        float: right; }
+
+  .preview-footer-nav {
+    position: relative; }
+    .preview-footer-nav .prev {
+      position: relative; }
+    .preview-footer-nav .next {
+      position: relative;
+      text-align: right; }
+    .preview-footer-nav .cta {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      text-align: center; }
+      .preview-footer-nav .cta .button {
+        display: inline-block; }
+
   /*********************
   SIDEBARS & ASIDES
   *********************/
@@ -2421,6 +2464,10 @@ you can add resource intensive styles.
   ******************************************************************/
   .wrap {
     width: 1040px; }
+
+  .last-col {
+    float: right;
+    padding-right: 0; }
 
   .page-template-preview-php {
     /* Flexslider */ }

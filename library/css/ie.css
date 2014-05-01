@@ -208,6 +208,10 @@ LAYOUT & GRID STYLES
 .wrap {
   width: 760px; }
 
+.last-col {
+  float: right;
+  padding-right: 0; }
+
 /*********************
 HEADER STYLES
 *********************/
@@ -304,6 +308,29 @@ NAVIGATION STYLES
         -o-box-shadow: none;
         box-shadow: none; }
 
+.preview-header-nav {
+  position: relative; }
+  .preview-header-nav nav {
+    float: right;
+    text-align: right; }
+    .preview-header-nav nav form {
+      float: right; }
+
+.preview-footer-nav {
+  position: relative; }
+  .preview-footer-nav .prev {
+    position: relative; }
+  .preview-footer-nav .next {
+    position: relative;
+    text-align: right; }
+  .preview-footer-nav .cta {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center; }
+    .preview-footer-nav .cta .button {
+      display: inline-block; }
+
 /*********************
 SIDEBARS & ASIDES
 *********************/
@@ -363,6 +390,10 @@ be seen on the Desktop.
 ******************************************************************/
 .wrap {
   width: 1040px; }
+
+.last-col {
+  float: right;
+  padding-right: 0; }
 
 .page-template-preview-php {
   /* Flexslider */ }

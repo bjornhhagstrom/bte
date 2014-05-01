@@ -109,6 +109,7 @@
                         <?php foreach( $subpages as $subpage ):
 
                           // vars
+                          $panel_id = $subpage->ID;
                           $panel_title = $subpage->post_title;
                           $panel_content = $subpage->post_content;
                           ?>
@@ -122,7 +123,7 @@
                               <span class="panel-content"><?php echo $panel_content; ?></span>
 
                               <div class="panel-cta">
-                                <a class="button" href="#">CTA</a>
+                                <a class="button" href="<?php the_field('call_to_action_link', $panel_id); ?>"><?php the_field('call_to_action_text', $panel_id); ?></a>
                               </div>
 
                             </div>
@@ -165,12 +166,14 @@
                       // vars
                       $subpage_title = $subpage->post_title;
                       $subpage_content = $subpage->post_content;
-                      $subpage_excerpt = 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh.<br /><br /><a class="button" href="#">Learn More</a>';
+                      $subpage_excerpt = 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh.';
+                      $subpage_id = $subpage->ID;
                       ?>
 
                       <li class="m-all t-1of<?php echo $count; ?> d-1of<?php echo $count; ?><?php if($i % $count == '0'){ echo ' last-col'; } ?>">
                         <h3><span style="font-size: 4em;">&#10006;</span><br /><?php echo $subpage_title; ?></h3>
                         <p><?php echo $subpage_excerpt; ?></p>
+                        <p><a class="button" href="<?php echo get_page_link($subpage_id); ?>" title="<?php echo $subpage_title; ?>">Learn More</a></p>
                       </li>
                       <?php endforeach; // end list ?>
 
@@ -204,12 +207,14 @@
                       // vars
                       $subpage_title = $subpage->post_title;
                       $subpage_content = $subpage->post_content;
-                      $subpage_excerpt = 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh.<br /><br /><a class="button" href="#">Learn More</a>';
+                      $subpage_excerpt = 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh.';
+                      $subpage_id = $subpage->ID;
                       ?>
 
                       <li class="m-all t-1of<?php echo $count; ?> d-1of<?php echo $count; ?><?php if($i % $count == '0'){ echo ' last-col'; } ?>">
                         <h3><span style="font-size: 2em;">&#9872;</span> <?php echo $subpage_title; ?></h3>
                         <p><?php echo $subpage_excerpt; ?></p>
+                        <p><a class="button" href="<?php echo get_page_link($subpage_id); ?>" title="<?php echo $subpage_title; ?>">Learn More</a></p>
                       </li>
                       <?php endforeach; // end list ?>
 
@@ -243,12 +248,14 @@
                       // vars
                       $subpage_title = $subpage->post_title;
                       $subpage_content = $subpage->post_content;
-                      $subpage_excerpt = 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh.<br /><br /><a class="button" href="#">Learn More</a>';
+                      $subpage_excerpt = 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh.';
+                      $subpage_id = $subpage->ID;
                       ?>
 
                       <li class="m-all t-1of<?php echo $count; ?> d-1of<?php echo $count; ?><?php if($i % $count == '0'){ echo ' last-col'; } ?>">
                         <h3><?php echo $subpage_title; ?></h3>
                         <p><?php echo $subpage_excerpt; ?></p>
+                        <p><a class="button" href="<?php echo get_page_link($subpage_id); ?>" title="<?php echo $subpage_title; ?>">Learn More</a></p>
                       </li>
                       <?php endforeach; // end list ?>
 

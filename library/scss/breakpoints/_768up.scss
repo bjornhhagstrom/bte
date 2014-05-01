@@ -27,6 +27,12 @@ LAYOUT & GRID STYLES
 	width: 760px;
 }
 
+// the last column
+.last-col {
+  float: right;
+  padding-right: 0;
+}
+
 /*********************
 HEADER STYLES
 *********************/
@@ -173,6 +179,38 @@ NAVIGATION STYLES
         -o-box-shadow: none;
         box-shadow: none;
       }
+    }
+  }
+}
+
+// single pages within preview
+.preview-header-nav {
+  position: relative;
+  nav {
+    float: right;
+    text-align: right;
+    form {
+      float: right;
+    }
+  }
+}
+.preview-footer-nav {
+  position: relative;
+  nav {}
+  .prev {
+    position: relative;
+  }
+  .next {
+    position: relative;
+    text-align: right;
+  }
+  .cta {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    .button {
+      display: inline-block;
     }
   }
 }

@@ -205,6 +205,15 @@ function bones_fonts() {
 
 add_action('wp_print_styles', 'bones_fonts');
 
+// If Page Is Parent or Child, http://css-tricks.com/snippets/wordpress/if-page-is-parent-or-child/
+function is_tree($pid) {      // $pid = The ID of the page we're looking for pages underneath
+  global $post;         // load details about this page
+  if(is_page()&&($post->post_parent==$pid||is_page($pid))) 
+    return true;   // we're at the page or at a sub page
+  else 
+    return false;  // we're elsewhere
+};
+
 
 
 /* DON'T DELETE THIS CLOSING TAG */ ?>

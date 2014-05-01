@@ -138,5 +138,34 @@ Stylesheet: Layout
 		}
 	}
 
+}
 
+// single pages within preview
+.preview-header-nav {
+	padding: 0.5em;
+	background-color: $black;
+	color: $white;
+	.preview-nav-title {
+		margin: 0 0 0.25em;
+	}
+	.button {
+		font-size: 0.8em;
+	}
+	nav {
+
+	}
+}
+.preview-footer-nav {
+	nav {}
+	.prev {
+		float: left;
+	}
+	.next {
+		float: right;
+	}
+	.cta {
+		.button {
+			@include button($white, $link-color);
+		}
+	}
 }
