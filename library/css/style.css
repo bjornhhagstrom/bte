@@ -986,9 +986,16 @@ Stylesheet: Layout
     border-radius: 1em; }
 
 .preview-header-nav {
-  padding: 0.5em;
-  background-color: #323944;
   color: white; }
+  .preview-header-nav .nav > li {
+    padding: 0 10px;
+    background-color: #485261; }
+    .preview-header-nav .nav > li.current-parent, .preview-header-nav .nav > li:hover {
+      background-color: #323944; }
+    .preview-header-nav .nav > li ul.sub-pages li a {
+      padding: 0;
+      width: auto;
+      border: 0; }
   .preview-header-nav .preview-nav-title {
     margin: 0 0 0.25em; }
   .preview-header-nav .button {
@@ -2217,6 +2224,43 @@ tweeners.
           */ }
 
   /* end .menu */
+  .preview-header-nav {
+    height: 80px; }
+    .preview-header-nav .nav {
+      height: 30px; }
+      .preview-header-nav .nav > li {
+        position: static;
+        margin: 0 0 0 10px;
+        height: 30px;
+        line-height: 30px;
+        border-radius: 10px 10px 0 0; }
+        .preview-header-nav .nav > li ul.sub-menu {
+          top: 30px;
+          left: 0;
+          width: 100%;
+          height: 50px;
+          border: 0;
+          background-color: #323944;
+          overflow: visible;
+          z-index: 0; }
+          .preview-header-nav .nav > li ul.sub-menu li {
+            padding: 10px;
+            height: 50px; }
+            .preview-header-nav .nav > li ul.sub-menu li.current::after {
+              top: 50px;
+              border: solid transparent;
+              content: " ";
+              height: 0;
+              width: 0;
+              position: absolute;
+              pointer-events: none;
+              border-top-color: #323944;
+              border-width: 10px;
+              left: 50%;
+              margin: 0 0 0 -10px; }
+        .preview-header-nav .nav > li:hover ul.sub-pages {
+          z-index: 1; }
+
   /*********************
   POSTS & CONTENT STYLES
   *********************/

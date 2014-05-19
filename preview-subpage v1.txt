@@ -23,7 +23,6 @@
 
   						<?php
               global $post;
-              $post_id = $post->ID;
               $ancestors = get_post_ancestors( $post->ID );            
               
               foreach ($ancestors as $ancestor) {
@@ -39,77 +38,55 @@
               <?php if($preview == 'true'): ?>
               
               <div class="preview-header-nav cf">
-                
-                <?php $section_args = array(
-                  'sort_order' => 'ASC',
-                  'sort_column' => 'menu_order',
-                  'child_of' => $ancestor_id,
-                  'parent' => $ancestor_id
-                ); 
-                $sections = get_pages($section_args); 
-                
-                // make the preview sections
-                if( $sections ): ?>
+                <div class="m-all t-1of2 d-1of2">
+                  <h4 class="preview-nav-title"><?php echo $ancestor_title; ?> Preview</h4>
+                  <a class="button" href="<?php echo get_page_link($ancestor_id); ?>" title="<?php echo $ancestor_title; ?>">
+                    &laquo;&nbsp;Back to Overview
+                  </a>
+                </div>
+                <nav class="m-all t-1of2 d-1of2 last-col">
 
-                <ul class="preview-sections nav cf">
-                
-                  <?php $section_count = 0; 
-                  
-                  foreach( $sections as $section ): 
-
-                  $section_count++;
-
-                  // vars
-                  $section_title = $section->post_title;
-                  $section_slug = $section->post_name;
-                  $section_id = $section->ID;
-
-                  ?>
-
-                  <li class="<?php echo 'section-' . $section_count; ?> <?php echo $section_slug; ?> preview-section">
-
-                    <?php echo $section_title; ?>
-
+                  Go to:&nbsp; 
+                  <form>
+                    <select name="page-dropdown" onchange='document.location.href=this.options[this.selectedIndex].value;'> 
+                    <option value=""><?php echo esc_attr( __( 'Select page' ) ); ?></option> 
                       <?php 
-                      $subpage_args = array(
+                      $parent_args = array(
                         'sort_order' => 'ASC',
                         'sort_column' => 'menu_order',
-                        'child_of' => $section_id
+                        'child_of' => $ancestor_id,
+                        'parent' => $ancestor_id
                       ); 
-                      $subpages = get_pages($subpage_args); 
-                      
-                      // make sub-pages
-                      if( $subpages ): 
-                      $i = 0; 
-                      $count = count($subpages); ?>
+                      $parents = get_pages($parent_args);
 
-                        <ul class="sub-pages sub-menu cf">
+                      foreach( $parents as $parent ):
 
-                          <?php foreach( $subpages as $subpage ):
+                        // vars
+                        $parent_id = $parent->ID;
+
+                        $subpage_args = array(
+                          'sort_order' => 'ASC',
+                          'sort_column' => 'menu_order',
+                          'child_of' => $parent_id
+                        ); 
+                        $subpages = get_pages($subpage_args);
+
+                        foreach( $subpages as $subpage ):
 
                           // vars
-                          $panel_id = $subpage->ID;
-                          $panel_title = $subpage->post_title;
-                          $panel_content = $subpage->post_content;
-                          ?>
+                          $option = '<option value="' . get_page_link( $subpage->ID ) . '">';
+                          $option .= $subpage->post_title;
+                          $option .= '</option>';
 
-                          <li class="sub-page<?php if( $panel_id == $post_id ){ echo ' current'; } ?>">
-                            <a href="<?php echo get_page_link($panel_id); ?>"><?php echo $panel_title; ?></a>
-                          </li>
+                          echo $option;
 
-                        <?php endforeach; // end foreach ?>
+                        endforeach;
 
-                        </ul>
+                      endforeach; ?>
+                    </select>
+                  </form>
 
-                      <?php endif; // end sub-pages ?>
-
-                    </li>
-
-                  <?php endforeach; // end foreach section ?>
-
-                </ul>
-  
-                <?php endif; // end if sections ?>
+                </nav>
               </div>
 
               <?php endif; // end if preview page ?>

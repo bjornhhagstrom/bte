@@ -142,9 +142,25 @@ Stylesheet: Layout
 
 // single pages within preview
 .preview-header-nav {
-	padding: 0.5em;
-	background-color: $black;
-	color: $white;
+	color: white;
+	.nav {
+		> li {
+			padding: 0 10px;
+			background-color: lighten($black, 10%);
+			&.current-parent, &:hover {
+				background-color: $black;
+			}
+			ul.sub-pages {
+				li {
+					a {
+						padding: 0;
+						width: auto;
+						border: 0;
+					}
+				}
+			}
+		}
+	}
 	.preview-nav-title {
 		margin: 0 0 0.25em;
 	}

@@ -108,6 +108,12 @@ function loadGravatars() {
 */
 jQuery(document).ready(function($) {
 
+  // preview nav, show current
+  var current = $('.sub-pages .current');
+  current.parents('ul.sub-pages').css('visibility', 'visible');
+  current.parents('li.preview-section').addClass('current-parent');
+
+  // flexslider
   $(window).load(function() {
     var $flexslider = $('.flexslider');
     $flexslider.flexslider({
